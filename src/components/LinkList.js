@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from './Link'
 import { useQuery } from 'react-apollo'
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import gql from 'graphql-tag'
 import { LINKS_PER_PAGE } from '../constants';
 export const FEED_QUERY = gql`
@@ -52,7 +52,7 @@ const getQueryVariables = (isNewPage, page) => {
 };
 
 const LinkList = () => {
-  const history = useNavigate();
+  const history = useHistory();
   const isNewPage = history.location.pathname.includes(
     'new'
   );

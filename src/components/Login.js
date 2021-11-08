@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { AUTH_TOKEN } from '../constants'
-import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
+import { Mutation } from 'react-apollo'
 
 const SIGNUP_MUTATION = gql`
   mutation SignupMutation($email: String!, $password: String!, $name: String!) {
@@ -10,7 +10,6 @@ const SIGNUP_MUTATION = gql`
     }
   }
 `
-
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -54,27 +53,26 @@ class Login extends Component {
             placeholder="Choose a safe password"
           />
         </div>
-        <div className="flex mt3">
+            <div className="flex mt3">
             <Mutation
                 mutation={login ? LOGIN_MUTATION : SIGNUP_MUTATION}
                 variables={{ email, password, name }}
                 onCompleted={data => this._confirm(data)}
             >
                 {mutation => (
-                    <div className="pointer mr2 button" onClick={mutation}>
-                        {login ? 'login' : 'create account'}
-                    </div>
+                <div className="pointer mr2 button" onClick={mutation}>
+                    {login ? 'login' : 'create account'}
+                </div>
                 )}
             </Mutation>
-          <div
-            className="pointer button"
-            onClick={() => this.setState({ login: !login })}
-          >
-            {login
-              ? 'need to create an account?'
-              : 'already have an account?'}
-          </div>
-        </div>
+            <div
+                className="pointer button"
+                onClick={() => this.setState({ login: !login })}
+            >
+                {login ? 'need to create an account?' : 'already have an account?'}
+            </div>
+            </div>
+
       </div>
     )
   }
@@ -84,6 +82,7 @@ class Login extends Component {
     this._saveUserData(token)
     this.props.history.push(`/`)
   }
+  
 
   _saveUserData = token => {
     localStorage.setItem(AUTH_TOKEN, token)

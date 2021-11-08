@@ -1,5 +1,5 @@
 {
-  "name": "hackernews-wcb",
+  "name": "hackernews-v2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,14 +10,15 @@
     "apollo-link-context": "^1.0.20",
     "apollo-link-ws": "^1.0.20",
     "axios": "^0.22.0",
-    "graphql": "^15.7.2",
-    "graphql-tag": "^2.12.6",
+    "graphql": "^15.6.1",
+    "graphql-tag": "^2.12.5",
     "react": "^17.0.2",
     "react-apollo": "^3.1.5",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^6.0.1",
+    "react-dom": "^17.0.2",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
-    "subscriptions-transport-ws": "^0.9.19",
+    "subscriptions-transport-ws": "^0.11.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

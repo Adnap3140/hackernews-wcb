@@ -2,19 +2,10 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { APP_SECRET, getUserId } = require('../utils');
 
-function post(parent, { url, description }, ctx, info) {
-  const userId = getUserId(ctx)
-  return ctx.db.mutation.createLink(
-    { data: { url, description, postedBy: { connect: { id: userId } } } },
-    info,
-  )
-}
-
-/* old function post()
-async function post(parent, args, context, info) {
+function post(parent, args, context, info) {
   const { userId } = context;
 
-  const newLink = await context.prisma.link.create({
+  const newLink = context.prisma.link.create({
     data: {
       url: args.url,
       description: args.description,
@@ -25,7 +16,6 @@ async function post(parent, args, context, info) {
 
   return newLink;
 }
-*/
 
 async function signup(parent, args, context, info) {
   const password = await bcrypt.hash(args.password, 10);

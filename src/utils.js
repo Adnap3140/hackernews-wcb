@@ -31,3 +31,4 @@ function timeDifference(current, previous) {
     const updated = new Date(date).getTime()
     return timeDifference(now, updated)
   }
+  
