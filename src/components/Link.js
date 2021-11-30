@@ -3,6 +3,7 @@ import { AUTH_TOKEN } from '../constants'
 import { timeDifferenceForDate } from '../utils'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
+
 const VOTE_MUTATION = gql`
   mutation VoteMutation($linkId: ID!) {
     vote(linkId: $linkId) {
@@ -12,6 +13,7 @@ const VOTE_MUTATION = gql`
           id
           user {
             id
+            name
           }
         }
       }
@@ -46,12 +48,15 @@ class Link extends Component {
   )}
 </div>
 
+{/* This is a comment */}
+
         <div className="ml1">
-          <div>
-            {this.props.link.description} ({this.props.link.url})
+          <div> 
+            {this.props.link.description} (<a href={this.props.link.url} target="_blank">{this.props.link.url}</a>)
           </div>
           <div className="f6 lh-copy gray">
-            {this.props.link.votes.length} votes | by{' '}
+            {this.props.link.votes.length} votes ~ first voter {' '}
+            {(this.props.link.votes[0]) ? this.props.link.votes[0].user.name : 'hi'}| by {' '}
             {this.props.link.postedBy
               ? this.props.link.postedBy.name
               : 'Unknown'}{' '}

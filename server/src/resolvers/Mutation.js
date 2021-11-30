@@ -66,21 +66,21 @@ async function vote(parent, args, context, info) {
     }
   });
 
-  if (Boolean(vote)) {
-    throw new Error(
-      `Already voted for link: ${args.linkId}`
-    );
+  if (!Boolean(vote)) {
+    // throw new Error(
+    //   `Already voted for link: ${args.linkId}`
+    // );
+
+    const newVote = context.prisma.vote.create({ 
+      data: {
+        user: { connect: { id: userId } },
+        link: { connect: { id: Number(args.linkId) } }
+      }
+    });
+    context.pubsub.publish('NEW_VOTE', newVote);
+
+    return newVote;
   }
-
-  const newVote = context.prisma.vote.create({ 
-    data: {
-      user: { connect: { id: userId } },
-      link: { connect: { id: Number(args.linkId) } }
-    }
-  });
-  context.pubsub.publish('NEW_VOTE', newVote);
-
-  return newVote;
 }
 
 module.exports = {
