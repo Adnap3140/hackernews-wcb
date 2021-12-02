@@ -22,6 +22,7 @@ model User {
   name     String
   email    String @unique
   password String
+  group    Int @default(1)
   links    Link[]
   votes    Vote[]
 }
