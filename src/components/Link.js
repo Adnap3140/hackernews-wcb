@@ -61,6 +61,7 @@ class Link extends Component {
               ? this.props.link.postedBy.name
               : 'Unknown'}{' '}
             {timeDifferenceForDate(this.props.link.createdAt)}
+            {', Group = '} {this.props.link.postedBy.group}
           </div>
         </div>
       </div>
