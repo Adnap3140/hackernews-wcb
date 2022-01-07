@@ -11,7 +11,8 @@ model Link {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
   description String
-  url         String
+  url         String 
+  tag         String   @default("Tag")
   postedBy    User     @relation(fields: [postedById], references: [id])
   postedById  Int
   votes       Vote[]

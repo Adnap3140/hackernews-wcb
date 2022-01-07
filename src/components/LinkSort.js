@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from './Link'
+import Link from './Sort'
 import { useQuery } from 'react-apollo'
 import { useHistory } from 'react-router';
 import gql from 'graphql-tag'

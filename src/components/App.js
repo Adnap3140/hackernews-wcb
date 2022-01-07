@@ -6,6 +6,7 @@ import CreateLink from './CreateLink'
 import Login from './Login'
 import Search from './Search'
 import Hi from './Hi.js'
+import LinkSort from './LinkSort'
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route exact path='/login' component={Login} />
             <Route exact path='/search' component={Search} />
             <Route exact path='/top' component={LinkList} />
+            <Route exact path='/sort' component={LinkSort} />
             <Route exact path='/new/:page' component={LinkList} />
             <Route exact path='hi' component={Hi} />
           </Switch>

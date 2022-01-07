@@ -8,6 +8,7 @@ const FEED_SEARCH_QUERY = gql`
       links {
         id
         url
+        tag
         description
         createdAt
         postedBy {
