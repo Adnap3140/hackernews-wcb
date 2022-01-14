@@ -25,6 +25,32 @@ async function feed(parent, args, context, info) {
   };
 }
 
+async function userfeed(parent, args, context, info) {
+  const where = args.filter
+    ? {
+        OR: [
+          { name: { contains: args.filter } },
+        ]
+      }
+    : {};
+
+  const users = await context.prisma.user.findMany({
+    where,
+    skip: args.skip,
+    take: args.take,
+    orderBy: args.orderBy
+  });
+
+  const count = await context.prisma.user.count({ where });
+
+  return {
+    id: 'main-feed',
+    users,
+    count
+  };
+}
+
 module.exports = {
+  userfeed,
   feed
 };

@@ -7,6 +7,7 @@ import Login from './Login'
 import Search from './Search'
 import Hi from './Hi.js'
 import LinkSort from './LinkSort'
+import UserList from './UserList'
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path='/search' component={Search} />
             <Route exact path='/top' component={LinkList} />
             <Route exact path='/sort' component={LinkSort} />
+            <Route exact path='/users' component={UserList} />
             <Route exact path='/new/:page' component={LinkList} />
             <Route exact path='hi' component={Hi} />
           </Switch>

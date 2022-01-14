@@ -6,11 +6,24 @@ type Query {
     take: Int
     orderBy: LinkOrderByInput
   ): Feed!
+  userfeed(
+    filter: String
+    skip: Int
+    take: Int
+    orderBy: UserOrderByInput
+  ): UserFeed!
 }
 
 type Feed {
   id: ID!
+  users: [User!]!
   links: [Link!]!
+  count: Int!
+}
+
+type UserFeed {
+  id: ID!
+  users: [User!]!
   count: Int!
 }
 
@@ -60,9 +73,16 @@ type Vote {
 }
 
 input LinkOrderByInput {
+  id: Sort
   description: Sort
   url: Sort
   createdAt: Sort
+}
+
+input UserOrderByInput {
+  id: Sort
+  name: Sort
+  email: Sort
 }
 
 enum Sort {
