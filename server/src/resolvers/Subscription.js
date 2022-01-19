@@ -20,7 +20,19 @@ const newVote = {
   },
 }
 
+function newImageSubscribe(parent, args, context, info) {
+  return context.pubsub.asyncIterator("NEW_IMAGE")
+}
+
+const newImage = {
+  subscribe: newImageSubscribe,
+  resolve: payload => {
+    return payload
+  },
+}
+
 module.exports = {
   newLink,
-  newVote
+  newVote,
+  newImage
 }

@@ -4,6 +4,13 @@ function links(parent, args, context) {
     .links();
 }
 
+function images(parent, args, context) {
+  return context.prisma.user
+    .findUnique({ where: { id: parent.id } })
+    .images();
+}
+
 module.exports = {
-  links
+  links,
+  images
 };

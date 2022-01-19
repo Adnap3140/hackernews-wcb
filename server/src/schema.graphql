@@ -12,6 +12,12 @@ type Query {
     take: Int
     orderBy: UserOrderByInput
   ): UserFeed!
+  imagefeed(
+    filter: String
+    skip: Int
+    take: Int
+    orderBy: ImageOrderByInput
+  ): ImageFeed!
 }
 
 type Feed {
@@ -27,8 +33,15 @@ type UserFeed {
   count: Int!
 }
 
+type ImageFeed {
+  id: ID!
+  images: [Image!]!
+  count: Int!
+}
+
 type Mutation {
   post(url: String!, description: String!, tag: String!): Link!
+  postImage(url: String!, description: String!, tag: String!): Image!
   signup(
     email: String!
     password: String!
@@ -41,6 +54,7 @@ type Mutation {
 type Subscription {
   newLink: Link
   newVote: Vote
+  newImage: Image
 }
 
 type AuthPayload {
@@ -54,6 +68,7 @@ type User {
   email: String!
   links: [Link!]!
   group: Int
+  images: [Image!]!
 }
 
 type Link {
@@ -83,6 +98,21 @@ input UserOrderByInput {
   id: Sort
   name: Sort
   email: Sort
+}
+
+input ImageOrderByInput {
+  id: Sort
+  description: Sort
+  url: Sort
+}
+
+type Image {
+  id: ID!
+  createdAt:   DateTime!
+  description: String!
+  url:         String!
+  tag:         String!
+  postedBy:    User
 }
 
 enum Sort {
